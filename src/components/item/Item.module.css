@@ -1,0 +1,32 @@
+.item {
+    border: 1px solid black;
+    width: 193px;
+    background-color: #ccc8c8;
+    margin: 0 10px 10px 0;
+}
+.item:nth-child(3n) {
+    margin-right: 0;
+}
+.item img {
+    height: 150px;
+    width: 100%;
+}
+.item h5 {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 18px;
+}
+.description {
+    padding-left: 10px;
+    font-size: 10px;
+}
+.infoContainer h3 {
+    font-size: 12px;
+    padding-left: 10px;
+    margin: 5px 0;
+}
+.infoContainer h3 span {
+    padding-left: 10px;
+    font-size: 10px;
+    font-weight: normal;
+}

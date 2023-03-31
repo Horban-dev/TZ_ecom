@@ -1,0 +1,36 @@
+.container {
+  max-width: 800px;
+  padding-right: 15px;
+}
+
+.colorFilter {
+    width: 180px;
+    background-color: #cecece;
+}
+  
+  .colorFilter h3 {
+    padding: 5px;
+    margin-top: 0;
+    background-color: white;
+    border: 1px solid black;
+  }
+  
+  .colorFilter ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .colorFilter li {
+    margin: 5px 0;
+  }
+  
+  .colorFilter label {
+    display: block;
+    margin-left: 20px;
+  }
+  .total {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
