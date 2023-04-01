@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './PriceFilter.module.css'
-const PriceFilter = () => {
+const PriceFilter = ({maxValue, minValue, onMaxPriceChange, onMinPriceChange}) => {
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -9,12 +9,16 @@ const PriceFilter = () => {
         <input 
           placeholder='min' 
           id="minPrice" 
-          name="minPrice" /> 
+          name="minPrice" 
+          value={minValue}
+          onChange={onMinPriceChange}/> 
             <span> - </span> 
         <input 
           id="maxPrice" 
           placeholder='max' 
-          name="maxPrice"/>
+          name="maxPrice"
+          value={maxValue}
+          onChange={onMaxPriceChange}/>
         </div>
       </div>
     </div>

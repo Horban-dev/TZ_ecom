@@ -10,6 +10,8 @@ function App() {
   const [colors, setColors] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
     fetch('http://localhost:3001/items')
@@ -20,6 +22,39 @@ function App() {
       .then(data => setColors(data));
   }, []);
 
+  const handleMinPriceChange = (event) => {
+    setMinPrice(event.target.value);
+  };
+  
+  const handleMaxPriceChange = (event) => {
+    setMaxPrice(event.target.value);
+  };
+
+  const searchFilteredItems = items.filter((item) =>
+  item.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  const filteredItems =
+  selectedColors.length === 0
+    ? searchFilteredItems
+    : searchFilteredItems.filter((item) =>
+        selectedColors.includes(item.color)
+  );
+
+  const priceFilteredItems = filteredItems.filter((item) => {
+    if (minPrice === "" && maxPrice === "") {
+      return true;
+    } else if (minPrice === "") {
+      return item.price <= parseInt(maxPrice);
+    } else if (maxPrice === "") {
+      return item.price >= parseInt(minPrice);
+    } else {
+      return (
+        item.price >= parseInt(minPrice) && item.price <= parseInt(maxPrice)
+      );
+    }
+  });
+
   const handleColorChange = (color) => {
     if (selectedColors.includes(color)) {
       setSelectedColors(selectedColors.filter((c) => c !== color));
@@ -27,18 +62,7 @@ function App() {
       setSelectedColors([...selectedColors, color]);
     }
   };
-
-  const searchFilteredItems = items.filter((item) =>
-    item.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
-
-  const filteredItems =
-    selectedColors.length === 0
-      ? searchFilteredItems
-      : searchFilteredItems.filter((item) =>
-          selectedColors.includes(item.color)
-        );
-
+ 
   const sortByPriceLowToHigh = () => {
     const sortedItems = [...items].sort((a, b) => a.price - b.price);
     setItems(sortedItems);
@@ -66,24 +90,19 @@ function App() {
         sortByPriceLowToHigh={sortByPriceLowToHigh}
         sortByRating={sortByRating}
       />
-      <input 
-          placeholder='min' 
-          id="minPrice" 
-          name="minPrice" /> 
-            <span> - </span> 
-        <input 
-          id="maxPrice" 
-          placeholder='max' 
-          name="maxPrice"/>
       <div className="container">
         <div className="wrapper">
           <ColorFilter
-            items={filteredItems}
+            items={priceFilteredItems}
             colors={colors}
             selectedColors={selectedColors}
             onColorChange={handleColorChange}
+            minValue={minPrice}
+            onChangeMin={handleMinPriceChange}
+            maxValue={maxPrice}
+            onChangeMax={handleMaxPriceChange}
           />
-          <ListItems data={filteredItems} />
+          <ListItems data={priceFilteredItems} />
         </div>
       </div>
     </div>
