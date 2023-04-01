@@ -96,9 +96,9 @@ function App() {
   return (
     <div className="App">
       {itemsLoading || colorsLoading ? (
-        <div>Loading...</div>
+        <div className='loading'>Loading...</div>
       ) : itemsError || colorsError ? (
-        <div>Error fetching data</div>
+        <div className='error'>Error fetching data</div>
       ) : (
         <>
           <SearchInput value={searchValue} onChange={handleSearchValue} />
