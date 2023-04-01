@@ -4,8 +4,10 @@ import ListItems from './components/ListItem/ListItems';
 import SearchInput from './components/SearchInput/SearchInput';
 import SortFilters from './components/SortFilters/SortFilters';
 import './App.css';
+import useFetch from './components/Hook/Hook';
 
 function App() {
+
   const [items, setItems] = useState([]);
   const [colors, setColors] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
@@ -13,14 +15,20 @@ function App() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
 
+  const [itemsData, itemsLoading, itemsError] = useFetch(
+    'http://localhost:3001/items'
+  );
+  const [colorsData, colorsLoading, colorsError] = useFetch(
+    'http://localhost:3001/colors'
+  );
+  
   useEffect(() => {
-    fetch('http://localhost:3001/items')
-      .then(response => response.json())
-      .then(data => setItems(data));
-    fetch('http://localhost:3001/colors')
-      .then(response => response.json())
-      .then(data => setColors(data));
-  }, []);
+    setItems(itemsData);
+  }, [itemsData]);
+
+  useEffect(() => {
+    setColors(colorsData);
+  }, [colorsData]);
 
   const handleMinPriceChange = (event) => {
     setMinPrice(event.target.value);
@@ -87,27 +95,35 @@ function App() {
 
   return (
     <div className="App">
-      <SearchInput value={searchValue} onChange={handleSearchValue} />
-      <SortFilters
-        sortByPriceHighToLow={sortByPriceHighToLow}
-        sortByPriceLowToHigh={sortByPriceLowToHigh}
-        sortByRating={sortByRating}
-      />
-      <div className="container">
-        <div className="wrapper">
-          <ColorFilter
-            items={priceFilteredItems}
-            colors={colors}
-            selectedColors={selectedColors}
-            onColorChange={handleColorChange}
-            minValue={minPrice}
-            onChangeMin={handleMinPriceChange}
-            maxValue={maxPrice}
-            onChangeMax={handleMaxPriceChange}
+      {itemsLoading || colorsLoading ? (
+        <div>Loading...</div>
+      ) : itemsError || colorsError ? (
+        <div>Error fetching data</div>
+      ) : (
+        <>
+          <SearchInput value={searchValue} onChange={handleSearchValue} />
+          <SortFilters
+            sortByPriceHighToLow={sortByPriceHighToLow}
+            sortByPriceLowToHigh={sortByPriceLowToHigh}
+            sortByRating={sortByRating}
           />
-          <ListItems data={priceFilteredItems} />
-        </div>
-      </div>
+          <div className="container">
+            <div className="wrapper">
+              <ColorFilter
+                items={priceFilteredItems}
+                colors={colors}
+                selectedColors={selectedColors}
+                onColorChange={handleColorChange}
+                minValue={minPrice}
+                onChangeMin={handleMinPriceChange}
+                maxValue={maxPrice}
+                onChangeMax={handleMaxPriceChange}
+              />
+              <ListItems data={priceFilteredItems} />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
