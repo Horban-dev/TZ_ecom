@@ -14,7 +14,7 @@
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
             "title": "Sneakes",
             "descr": "Some text",
-            "color": "White",
+            "color": "Black",
             "price": 130,
             "rating": 3
         },
@@ -32,7 +32,7 @@
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
             "title": "Sneakes",
             "descr": "Some text",
-            "color": "White",
+            "color": "Brown",
             "price": 300,
             "rating": 3.7
         },
@@ -41,17 +41,35 @@
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
             "title": "Sneakes",
             "descr": "Some text",
-            "color": "White",
+            "color": "Red",
             "price": 90,
             "rating": 2.5
         }
     ],
     "colors": [
-        "black",
-        "red",
-        "white",
-        "blue",
-        "grey",
-        "brown"
+        {
+            "id": 1,
+            "color": "Black"
+        },
+        {
+            "id": 2,
+            "color": "Red"
+        },
+        {
+            "id": 3,
+            "color": "White"
+        },
+        {
+            "id": 4,
+            "color": "Blue"
+        },
+        {
+            "id": 5,
+            "color": "Grey"
+        },
+        {
+            "id": 6,
+            "color": "Brown"
+        }
     ]
 }
