@@ -2,7 +2,7 @@ import React from "react";
 import style from "./ColorOptions.module.css";
 import PriceFilter from "../priceFilter/PriceFilter";
 
-const ColorFilter = ({ colors, onColorChange }) => {
+const ColorFilter = ({ colors, onColorChange, items}) => {
   return (
     <div className={style.container}>
       <div className={style.colorFilter}>
@@ -22,8 +22,8 @@ const ColorFilter = ({ colors, onColorChange }) => {
           ))}
         </ul>
       </div>
-      <PriceFilter />
-      <div className={style.total}>Total products: 5</div>
+      <PriceFilter/>
+      <div className={style.total}>Total products: {items.length}</div>
     </div>
   );
 };

@@ -3,7 +3,7 @@
         {
             "id": 1,
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
-            "title": "Sneakes",
+            "title": "First Sneakes",
             "descr": "Some text",
             "color": "White",
             "price": 100,
@@ -12,7 +12,7 @@
         {
             "id": 2,
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
-            "title": "Sneakes",
+            "title": "Second Sneakes",
             "descr": "Some text",
             "color": "Black",
             "price": 130,
@@ -21,7 +21,7 @@
         {
             "id": 3,
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
-            "title": "Sneakes",
+            "title": "Third Sneakes",
             "descr": "Some text",
             "color": "White",
             "price": 200,
@@ -30,7 +30,7 @@
         {
             "id": 4,
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
-            "title": "Sneakes",
+            "title": "Fourth Sneakes",
             "descr": "Some text",
             "color": "Brown",
             "price": 300,
@@ -39,7 +39,7 @@
         {
             "id": 5,
             "img": "https://www.smaroadsafety.com/wp-content/uploads/2022/06/no-pic.png",
-            "title": "Sneakes",
+            "title": "Fifth Sneakes",
             "descr": "Some text",
             "color": "Red",
             "price": 90,

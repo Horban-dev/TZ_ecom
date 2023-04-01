@@ -4,7 +4,6 @@ import style from './ListItems.module.css'
 
 const ListItems = ({data}) => {
     
-  console.log(data)
     return (
         <div className={style.items}>
             {data.map(item => {
