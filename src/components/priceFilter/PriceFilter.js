@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './PriceFilter.module.css'
+
 const PriceFilter = ({maxValue, minValue, onMaxPriceChange, onMinPriceChange}) => {
   return (
     <div className={style.container}>

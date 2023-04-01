@@ -1,6 +1,7 @@
 import React from "react";
+import PriceFilter from "../PriceFilter/PriceFilter";
 import style from "./ColorOptions.module.css";
-import PriceFilter from "../priceFilter/PriceFilter";
+
 
 const ColorFilter = ({ colors, onColorChange, items, minValue,maxValue,onChangeMin,onChangeMax}) => {
   return (

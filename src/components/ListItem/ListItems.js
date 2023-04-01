@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from '../item/Item';
+import Item from '../Item/Item';
 import style from './ListItems.module.css'
 
 const ListItems = ({data}) => {

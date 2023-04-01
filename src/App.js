@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import ColorFilter from './components/colorOptions/ColorFilter';
+import { useEffect, useMemo, useState } from 'react';
+import ColorFilter from './components/ColorFilter/ColorFilter';
 import ListItems from './components/ListItem/ListItems';
-import SearchInput from './components/searchInput/searchInput';
-import SortFilters from './components/sortFilters/SortFilters';
+import SearchInput from './components/SearchInput/SearchInput';
+import SortFilters from './components/SortFilters/SortFilters';
+import './App.css';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -41,19 +41,22 @@ function App() {
         selectedColors.includes(item.color)
   );
 
-  const priceFilteredItems = filteredItems.filter((item) => {
-    if (minPrice === "" && maxPrice === "") {
-      return true;
-    } else if (minPrice === "") {
-      return item.price <= parseInt(maxPrice);
-    } else if (maxPrice === "") {
-      return item.price >= parseInt(minPrice);
-    } else {
-      return (
-        item.price >= parseInt(minPrice) && item.price <= parseInt(maxPrice)
-      );
-    }
-  });
+  const priceFilteredItems = useMemo(() => {
+    return filteredItems.filter((item) => {
+      if (minPrice === "" && maxPrice === "") {
+        return true;
+      } else if (minPrice === "") {
+        return item.price <= parseInt(maxPrice);
+      } else if (maxPrice === "") {
+        return item.price >= parseInt(minPrice);
+      } else {
+        return (
+          item.price >= parseInt(minPrice) && item.price <= parseInt(maxPrice)
+        );
+      }
+    });
+  }, [filteredItems, minPrice, maxPrice]);
+  
 
   const handleColorChange = (color) => {
     if (selectedColors.includes(color)) {

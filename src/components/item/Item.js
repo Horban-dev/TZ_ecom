@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Item.module.css'
+
 const Item = ({id, img,price, title, color, descr, rating}) => {
     return (
         <div key={id} className={style.item}>
